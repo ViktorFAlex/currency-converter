@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from '../assets/logo.svg';
+import { Provider } from 'react-redux';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Header from '../Header/Header';
+import RatesPage from '../../pages/RatesPage/RatesPage';
+import ConverterPage from '../../pages/ConverterPage/ConverterPage';
+import PageLayout from '../PageLayout/PageLayout';
+import store from '../../slices/index';
 
 function App() {
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <img src={logo} className='App-logo' alt='logo' />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className='App-link'
-          href='https://reactjs.org'
-          target='_blank'
-          rel='noopener noreferrer'
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <Header></Header>
+      <BrowserRouter>
+        <Routes>
+          <Route path={'/'} element={<PageLayout />}>
+            <Route index element={<ConverterPage />} />
+            <Route path={'/rates'} element={<RatesPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 

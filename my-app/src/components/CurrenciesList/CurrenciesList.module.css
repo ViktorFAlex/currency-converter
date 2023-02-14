@@ -1,0 +1,38 @@
+.currencyRow {
+  flex: 100%;
+  display: flex;
+  padding-left: 10px;
+}
+
+.gridMain {
+  grid-column: 1 / 3;
+  grid-row: 3 / 13;
+  background: #fff;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.currencyCell {
+  flex: 50%;
+  width: 100%;
+  text-align: left;
+  margin: auto;
+  font-weight: 700;
+}
+
+.gridFooter {
+  grid-column: 1 / 3;
+  margin: auto;
+  background: #fff;
+}
+
+.item {
+  padding-left: 10px;
+}
+
+.currenciesBtn {
+  all: unset;
+}
+.currenciesBtn:hover {
+  cursor: pointer;
+}

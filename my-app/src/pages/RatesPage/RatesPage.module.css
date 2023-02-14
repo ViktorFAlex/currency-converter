@@ -1,0 +1,73 @@
+.tableContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  height: 75%;
+}
+.ratesTable {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(13, 1fr);
+  width: 50%;
+}
+.gridHeader {
+  grid-column: 1 / 3;
+  grid-row: 1 / 3;
+}
+
+.gridHeader {
+  display: flex;
+  flex-wrap: wrap;
+}
+.headerCell {
+  flex: 50%;
+  width: 100%;
+  text-align: left;
+  margin: auto;
+  font-weight: 700;
+}
+.headers,
+.current {
+  flex: 100%;
+  display: flex;
+  padding-left: 10px;
+}
+
+.headers {
+  background: rgb(243, 243, 144);
+  padding: 5px 0 5px 10px;
+}
+
+.current {
+  color: #000;
+  background: #fff;
+  justify-content: center;
+}
+.autocomplete {
+  padding-top: 10px;
+  padding-right: 10px;
+}
+
+.gridFooter {
+  grid-column: 1 / 3;
+  margin: auto;
+}
+@media screen and (max-width: 900px) {
+  .ratesTable {
+    width: 50% !important;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .ratesTable {
+    width: 75% !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .ratesTable {
+    width: 100% !important;
+  }
+}

@@ -1,0 +1,11 @@
+.pageContainer {
+  display: flex;
+  justify-content: center;
+  height: 93vh;
+}
+
+.pageBox {
+  background: #666564;
+  height: 100%;
+  padding-top: 10px;
+}
