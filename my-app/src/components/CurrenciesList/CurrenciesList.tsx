@@ -1,7 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { Pagination } from '@mui/material';
+import { Pagination, Typography } from '@mui/material';
 import {
-  Currencies,
   actions,
   selectAll,
   fetchCurrencies,
@@ -12,6 +11,7 @@ import { useState } from 'react';
 import countries from '../../Data/data';
 import routes from '../../routes';
 import { AppDispatch } from '../../slices/index';
+import { Currencies } from '../../types/interfaces';
 
 interface PageChanger {
   (event: React.ChangeEvent<unknown>, page: number): void;
@@ -39,26 +39,34 @@ const CurrenciesList = (): JSX.Element => {
   };
   const pagesCount = Math.ceil(rates.length / ratesPerPage);
   const currentRates = getCurrentPages(rates);
-
   return (
     <>
       <div className={styles.gridMain}>
         {currentRates.map((option) => (
           <div className={styles.currencyRow} key={option.currency}>
-            <div className={styles.currencyCell}>
+            <div className={`${styles.currencyCell} ${styles.currencyCellLeft}`}>
               <img
                 loading='lazy'
                 width='20'
                 src={routes.flagRoute(countries[option.currency].code)}
                 alt=''
               />
-              <span className={styles.item}>
-                <button className={styles.currenciesBtn} onClick={handleClick(option)}>
+              <button
+                className={styles.currenciesBtn}
+                onClick={handleClick(option)}
+                title={buildInput(option)}
+              >
+                <Typography noWrap className={styles.item}>
                   {buildInput(option)}
-                </button>
-              </span>
+                </Typography>
+              </button>
             </div>
-            <div className={styles.currencyCell}>{option.value}</div>
+            <div
+              className={`${styles.currencyCell} ${styles.currencyCellRight}`}
+              title={`${option.value}`}
+            >
+              <Typography noWrap>{option.value}</Typography>
+            </div>
           </div>
         ))}
       </div>
@@ -69,6 +77,7 @@ const CurrenciesList = (): JSX.Element => {
           onChange={handleChange}
           count={pagesCount}
           shape='rounded'
+          siblingCount={0}
         />
       </div>
     </>

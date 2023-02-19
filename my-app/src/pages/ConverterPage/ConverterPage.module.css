@@ -1,0 +1,87 @@
+.converterContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 70%;
+
+  padding: 10px 0;
+  background: #fff;
+  border: 2px solid #000;
+}
+.currenciesSelect {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  width: 100%;
+}
+.converterAutocomplete {
+  width: 33%;
+}
+.converterAmount,
+.converterSwitchBtn {
+  width: 25%;
+  align-self: center;
+}
+.converterAmount {
+  width: 40%;
+}
+.converterSwitchBtn {
+  font-size: 30px;
+}
+.helperText {
+  text-align: center;
+}
+.convertBtn {
+  width: 25%;
+  height: 30px;
+  align-self: center;
+}
+.converterLeft {
+  order: 1;
+}
+.converterCenter {
+  order: 2;
+}
+.converterRight {
+  order: 3;
+}
+@media (min-width: 280px) {
+  .converterContainer {
+    width: calc(100% - 4px);
+  }
+}
+@media (max-width: 670px) {
+  .converterLeft {
+    width: 48%;
+  }
+  .converterRight {
+    order: 2;
+    width: 48%;
+  }
+  .converterCenter {
+    order: 3;
+    width: 40%;
+  }
+}
+@media (max-width: 550px) {
+  .converterCenter,
+  .converterAmount {
+    width: 50%;
+  }
+}
+@media (max-width: 420px) {
+  .converterCenter,
+  .converterAmount {
+    width: 60%;
+  }
+}
+@media (max-width: 390px) {
+  .converterLeft,
+  .converterRight {
+    width: 100%;
+  }
+  .converterCenter,
+  .converterAmount {
+    width: 90%;
+  }
+}

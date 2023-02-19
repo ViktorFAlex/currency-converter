@@ -1,0 +1,18 @@
+.current {
+  display: flex;
+  flex: 1 1 100%;
+  padding-left: 10px;
+
+  color: #000;
+  background: #fff;
+}
+.autocomplete {
+  padding-top: 10px;
+  flex: 1 1 65%;
+}
+.autocompleteValue {
+  flex: 1 1 35%;
+  margin: auto 0 auto 0;
+  font-weight: 700;
+  text-align: center;
+}

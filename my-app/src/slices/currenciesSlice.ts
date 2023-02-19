@@ -1,30 +1,16 @@
 import axios from 'axios';
 import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
 import routes from '../routes/index';
-
-export interface Currencies {
-  currency: string;
-  value: number;
-  id: number;
-}
-
-interface CurrenciesState {
-  currentCurrencyId: number;
-  currenciesRates: Currencies[];
-}
-
-interface GlobalState {
-  currencies: CurrenciesState;
-}
+import { GlobalState, Currencies, CurrenciesState } from '../types/interfaces';
 
 const defaultCurrency = 'RUB';
-const defaultCurrencyIndex = 120;
+const defaultCurrencyIndex = 120; //index of 'RUB' from Api
 
 export const fetchCurrencies = createAsyncThunk(
   'currencies/fetchCurrencies',
   async (currency: string = defaultCurrency) => {
     try {
-      const url = new URL(`?base=${currency}`, routes.rates());
+      const url = routes.rates(currency);
       const response = await axios.get(url.href);
       return response.data;
     } catch (e) {
@@ -61,28 +47,32 @@ const currenciesSlice = createSlice({
   },
 });
 
-const selectState = (state: GlobalState) => state.currencies;
+const selectCurrenciesState = (state: GlobalState) => state.currencies;
 
 export const selectCurrentCurrencyId = createSelector(
-  selectState,
+  selectCurrenciesState,
   (state: CurrenciesState) => state.currentCurrencyId,
 );
 
 export const selectAll = createSelector(
-  selectState,
+  selectCurrenciesState,
   (state: CurrenciesState) => state.currenciesRates,
 );
 
 export const selectCurrentCurrency = createSelector(
-  selectState,
+  selectAll,
   selectCurrentCurrencyId,
-  ({ currenciesRates }, id) => currenciesRates[id],
+  (currenciesRates, id) => currenciesRates[id],
 );
 
 export const selectCurrentRates = createSelector(
-  selectState,
+  selectAll,
   selectCurrentCurrencyId,
-  ({ currenciesRates }, id) => [...currenciesRates.slice(0, id), ...currenciesRates.slice(id + 1)],
+  (currenciesRates, currentId) => currenciesRates.filter(({ id }) => currentId !== id),
+);
+
+export const selectCurrenciesNames = createSelector(selectAll, (currenciesRates) =>
+  currenciesRates.map(({ currency }) => currency),
 );
 
 export const { actions } = currenciesSlice;

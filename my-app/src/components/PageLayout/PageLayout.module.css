@@ -1,11 +1,15 @@
 .pageContainer {
-  display: flex;
-  justify-content: center;
-  height: 93vh;
+  height: 100%;
 }
 
 .pageBox {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
   background: #666564;
-  height: 100%;
-  padding-top: 10px;
+}
+@media (max-width: 500px) {
+  .pageContainer {
+    padding: 0 !important;
+  }
 }

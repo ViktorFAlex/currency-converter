@@ -1,14 +1,14 @@
 import { Box, Toolbar, AppBar, Typography } from '@mui/material';
-import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import styles from './Header.module.css';
 
 const Header = (): JSX.Element => (
-  <Box>
+  <Box className={styles.headerBox}>
     <AppBar position='static' color='secondary'>
       <Toolbar className={styles.headerToolbar}>
-        <CurrencyExchangeIcon className={styles.headerIcon} />
-        <Typography variant='h6' component='div'>
-          Currency Converter and exchange rates
+        <MonetizationOnIcon className={styles.headerIcon} />
+        <Typography variant='h6' component='div' className={styles.headerTitle}>
+          Currency converter and exchange rates
         </Typography>
         <p className={styles.p}>Hey</p>
       </Toolbar>
