@@ -12,10 +12,13 @@ import Header from '../Header/Header';
 
 const PageLayout = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
+
   useEffect(() => {
     dispatch(fetchCurrencies());
   }, [dispatch]);
+
   const rates = useSelector(selectAll);
+
   return (
     <Container maxWidth='lg' className={styles.pageContainer}>
       <Box className={styles.pageBox}>

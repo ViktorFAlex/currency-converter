@@ -1,61 +1,46 @@
 import { Autocomplete, Box, TextField } from '@mui/material';
 import { useSelector, useDispatch } from 'react-redux';
+import { useTranslation } from 'react-i18next';
 import {
-  selectAll,
-  selectCurrentCurrencyId,
   actions,
   fetchCurrencies,
   selectCurrentCurrency,
+  selectCurrenciesNames,
 } from '../../slices/currenciesSlice';
-import { Currencies } from '../../types/interfaces';
+import { AutocompleteHandler } from '../../types/interfaces';
 import styles from './CustomAutocomplete.module.css';
-import countries from '../../Data/data';
+import codes from '../../data/codes';
 import { AppDispatch } from '../../slices/index';
 import routes from '../../routes/index';
+import buildOutput from '../../utils/buildOutput';
 
 const CustomAutocomplete = (): JSX.Element => {
-  interface PageChanger {
-    (event: React.ChangeEvent<unknown>, currentCurrency: Currencies): void;
-  }
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
-  const rates = useSelector(selectAll);
-  const id = useSelector(selectCurrentCurrencyId);
-  const currentCurrency = useSelector(selectCurrentCurrency);
-  const buildInput = (option: Currencies) => {
-    const { country, currency } = countries[option.currency];
-    return `${option.currency} - ${country || ''} ${currency}`;
+  const currencies = useSelector(selectCurrenciesNames);
+  const currency = useSelector(selectCurrentCurrency);
+
+  const handleChange: AutocompleteHandler = (event, currency) => {
+    dispatch(actions.setCurrency(currency));
+    dispatch(fetchCurrencies(currency));
   };
 
-  const handleClick: PageChanger = (event, currentCurrency) => {
-    dispatch(actions.setCurrency(currentCurrency));
-    dispatch(fetchCurrencies(currentCurrency.currency));
-  };
   return (
     <div className={styles.current}>
       <Autocomplete
+        {...{ options: currencies }}
         disablePortal
         disableClearable
         autoHighlight
-        options={rates}
         sx={{ width: '48%' }}
-        getOptionLabel={(option) => buildInput(option)}
+        value={currency}
         className={styles.autocomplete}
-        value={rates[id]}
-        onChange={handleClick}
+        getOptionLabel={buildOutput(t)}
+        onChange={handleChange}
         renderOption={(props, option) => (
-          <Box
-            component='li'
-            key={option.id}
-            sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
-            {...props}
-          >
-            <img
-              loading='lazy'
-              width='20'
-              src={routes.flagRoute(countries[option.currency].code)}
-              alt=''
-            />
-            {buildInput(option)}
+          <Box component='li' key={option} sx={{ '& > img': { mr: 2, flexShrink: 0 } }} {...props}>
+            <img loading='lazy' width='20' src={routes.flagRoute(codes[option])} alt='' />
+            {buildOutput(t)(option)}
           </Box>
         )}
         renderInput={(params) => (
@@ -66,15 +51,9 @@ const CustomAutocomplete = (): JSX.Element => {
             sx={{ input: { cursor: 'pointer' } }}
             InputProps={{
               ...params.InputProps,
-              startAdornment: (
-                <img
-                  width='20'
-                  src={routes.flagRoute(countries[currentCurrency.currency].code)}
-                  alt=''
-                />
-              ),
+              startAdornment: <img width='20' src={routes.flagRoute(codes[currency])} alt='' />,
             }}
-            label='Select currency'
+            label={t('elements.userLabel')}
           />
         )}
       />

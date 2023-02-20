@@ -1,5 +1,5 @@
-.p {
-  position: absolute;
+.lngSwitch {
+  position: absolute !important;
   top: 1;
   right: 0;
 

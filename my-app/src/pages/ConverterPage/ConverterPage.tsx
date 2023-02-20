@@ -8,25 +8,25 @@ import { fetchConvert, selectConvertState } from '../../slices/convertSlice';
 import CurrencyExchangeIcon from '@mui/icons-material/CurrencyExchange';
 import styles from './ConverterPage.module.css';
 import ConvertField from '../../components/ConvertField/ConvertField';
-import countries from '../../Data/data';
+import codes from '../../data/codes';
 import routes from '../../routes';
+import { useTranslation } from 'react-i18next';
+import buildOutput from '../../utils/buildOutput';
 
 const ConverterPage = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
+  const { t } = useTranslation();
+
   const currencies = useSelector(selectCurrenciesNames);
+
   const validationSchema = Yup.object().shape({
     from: Yup.string().required().oneOf(currencies, 'choose any Option'),
     to: Yup.string().required().oneOf(currencies, 'choose any Option'),
     amount: Yup.string().min(3, 'not Enough').required('Low'),
   });
-  const defaultProps = {
-    options: currencies,
-  };
+
   const { amount: convertAmount } = useSelector(selectConvertState);
-  const buildInput = (option: string) => {
-    const { country, currency } = countries[option];
-    return `${option} - ${country || ''} ${currency}`;
-  };
+
   const formik = useFormik({
     initialValues: {
       from: '',
@@ -34,7 +34,6 @@ const ConverterPage = (): JSX.Element => {
       amount: '',
     },
     onSubmit: async (data) => {
-      console.log('data', data);
       await dispatch(fetchConvert(data));
     },
     validationSchema,
@@ -55,12 +54,12 @@ const ConverterPage = (): JSX.Element => {
       >
         <div className={styles.currenciesSelect}>
           <Autocomplete
-            {...defaultProps}
+            {...{ options: currencies }}
             disablePortal
             autoHighlight
             value={formik.values.from}
             className={`${styles.converterAutocomplete} ${styles.converterLeft}`}
-            getOptionLabel={(option) => (option ? buildInput(option) : '')}
+            getOptionLabel={buildOutput(t)}
             isOptionEqualToValue={(option, value) => value === option || value === ''}
             onChange={(e, value) => formik.setFieldValue('from', value)}
             onBlur={() => handleBlur('from')}
@@ -77,11 +76,7 @@ const ConverterPage = (): JSX.Element => {
                 InputProps={{
                   ...params.InputProps,
                   startAdornment: formik.values.from ? (
-                    <img
-                      width='20'
-                      src={routes.flagRoute(countries[formik.values.from].code)}
-                      alt=''
-                    />
+                    <img width='20' src={routes.flagRoute(codes[formik.values.from])} alt='' />
                   ) : null,
                 }}
               />
@@ -93,13 +88,8 @@ const ConverterPage = (): JSX.Element => {
                 sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
                 {...props}
               >
-                <img
-                  loading='lazy'
-                  width='20'
-                  src={routes.flagRoute(countries[option].code)}
-                  alt=''
-                />
-                {buildInput(option)}
+                <img loading='lazy' width='20' src={routes.flagRoute(codes[option])} alt='' />
+                {buildOutput(t)(option)}
               </Box>
             )}
           />
@@ -114,12 +104,12 @@ const ConverterPage = (): JSX.Element => {
             Switch currencies
           </Button>
           <Autocomplete
-            {...defaultProps}
+            {...{ options: currencies }}
             disablePortal
             autoHighlight
             value={formik.values.to}
             className={`${styles.converterAutocomplete} ${styles.converterRight}`}
-            getOptionLabel={(option) => (option ? buildInput(option) : '')}
+            getOptionLabel={buildOutput(t)}
             isOptionEqualToValue={(option, value) => value === option || value === ''}
             onChange={(e, value) => formik.setFieldValue('to', value)}
             onBlur={() => handleBlur('to')}
@@ -137,11 +127,7 @@ const ConverterPage = (): JSX.Element => {
                 InputProps={{
                   ...params.InputProps,
                   startAdornment: formik.values.to ? (
-                    <img
-                      width='20'
-                      src={routes.flagRoute(countries[formik.values.to].code)}
-                      alt=''
-                    />
+                    <img width='20' src={routes.flagRoute(codes[formik.values.to])} alt='' />
                   ) : null,
                 }}
               />
@@ -153,13 +139,8 @@ const ConverterPage = (): JSX.Element => {
                 sx={{ '& > img': { mr: 2, flexShrink: 0 } }}
                 {...props}
               >
-                <img
-                  loading='lazy'
-                  width='20'
-                  src={routes.flagRoute(countries[option].code)}
-                  alt=''
-                />
-                {buildInput(option)}
+                <img loading='lazy' width='20' src={routes.flagRoute(codes[option])} alt='' />
+                {buildOutput(t)(option)}
               </Box>
             )}
           />

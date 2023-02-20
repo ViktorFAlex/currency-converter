@@ -3,7 +3,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   width: 70%;
-
+  margin: auto auto 10px auto;
   padding: 10px 0;
   background: #fff;
   border: 2px solid #000;
@@ -45,12 +45,12 @@
 .converterRight {
   order: 3;
 }
-@media (min-width: 280px) {
+@media (max-width: 605px) {
   .converterContainer {
     width: calc(100% - 4px);
   }
 }
-@media (max-width: 670px) {
+@media (max-width: 750px) {
   .converterLeft {
     width: 48%;
   }
@@ -60,22 +60,15 @@
   }
   .converterCenter {
     order: 3;
-    width: 40%;
+    width: 50%;
   }
-}
-@media (max-width: 550px) {
-  .converterCenter,
-  .converterAmount {
+  .converterAmount,
+  .converterCenter {
     width: 50%;
   }
 }
-@media (max-width: 420px) {
-  .converterCenter,
-  .converterAmount {
-    width: 60%;
-  }
-}
-@media (max-width: 390px) {
+
+@media (max-width: 450px) {
   .converterLeft,
   .converterRight {
     width: 100%;

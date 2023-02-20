@@ -1,5 +1,23 @@
 .footer {
-  background-color: aqua;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  width: 100%;
   height: 5%;
+
   margin-top: auto;
+  padding: 5px 0 5px 0;
+
+  background-color: #9c27b0;
+  color: #fff;
+}
+
+.footerLink {
+  padding-left: 0.3rem;
+  text-decoration: none;
+  color: #fff;
+}
+.footerLink:hover {
+  color: #cacaca;
 }

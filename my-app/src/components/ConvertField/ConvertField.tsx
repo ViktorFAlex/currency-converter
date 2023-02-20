@@ -1,31 +1,23 @@
-import axios from 'axios';
 import { Card } from '@mui/material';
+import { useTranslation } from 'react-i18next';
 import { useSelector } from 'react-redux';
 import { selectConvertState } from '../../slices/convertSlice';
 import routes from '../../routes';
 import styles from './ConvertField.module.css';
-import countries from '../../Data/data';
+import codes from '../../data/codes';
+
 const ConvertField = (): JSX.Element => {
+  const { t } = useTranslation();
   const { from, to, amount, result } = useSelector(selectConvertState);
   return (
     <Card variant='outlined' className={styles.convertOutput}>
       <div className={styles.convertFrom}>
-        <img
-          width='40'
-          className={styles.convertImg}
-          src={routes.flagRoute(countries[from].code)}
-          alt=''
-        />
-        {amount} {countries[from].country} {countries[from].currency} =
+        <img width='40' className={styles.convertImg} src={routes.flagRoute(codes[from])} alt='' />
+        {amount} {t(`countries.${from}`)} =
       </div>
       <div className={styles.convertTo}>
-        <img
-          width='40'
-          className={styles.convertImg}
-          src={routes.flagRoute(countries[to].code)}
-          alt=''
-        />{' '}
-        {result} {countries[to].country} {countries[to].currency}
+        <img width='40' className={styles.convertImg} src={routes.flagRoute(codes[to])} alt='' />
+        {result} {t(`countries.${to}`)}
       </div>
     </Card>
   );

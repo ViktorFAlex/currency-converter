@@ -1,71 +1,62 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Pagination, Typography } from '@mui/material';
-import {
-  actions,
-  selectAll,
-  fetchCurrencies,
-  selectCurrentRates,
-} from '../../slices/currenciesSlice';
+import { useTranslation } from 'react-i18next';
+import { actions, fetchCurrencies, selectCurrentRates } from '../../slices/currenciesSlice';
 import styles from './CurrenciesList.module.css';
 import { useState } from 'react';
-import countries from '../../Data/data';
+import codes from '../../data/codes';
 import routes from '../../routes';
 import { AppDispatch } from '../../slices/index';
-import { Currencies } from '../../types/interfaces';
+import { Currencies, PageHandler } from '../../types/interfaces';
 
-interface PageChanger {
-  (event: React.ChangeEvent<unknown>, page: number): void;
-}
 const CurrenciesList = (): JSX.Element => {
+  const { t } = useTranslation();
   const dispatch = useDispatch<AppDispatch>();
+
   const defaultPage = 1;
   const ratesPerPage = 10;
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(defaultPage);
   const rates = useSelector(selectCurrentRates);
+
   const getCurrentPages = (rates: Currencies[]): Currencies[] => {
     const startToShow = defaultPage - 1 + ratesPerPage * (page - 1);
     const endToShow = ratesPerPage * page - 1;
     return rates.slice(startToShow, endToShow + 1);
   };
-  const handleClick = (option: Currencies) => (): void => {
-    dispatch(actions.setCurrency(option));
-    dispatch(fetchCurrencies(option.currency));
+
+  const handleClick = (currency: string) => (): void => {
+    dispatch(actions.setCurrency(currency));
+    dispatch(fetchCurrencies(currency));
   };
-  const handleChange: PageChanger = (event, page) => setPage(page);
-  const buildInput = (option: Currencies) => {
-    const country = countries[option.currency].country;
-    const currency = countries[option.currency].currency;
-    return `${country ? `${country} ` : ''}${currency}`;
-  };
+
+  const handleChange: PageHandler = (event, page) => setPage(page);
+
   const pagesCount = Math.ceil(rates.length / ratesPerPage);
+
   const currentRates = getCurrentPages(rates);
+
   return (
     <>
       <div className={styles.gridMain}>
-        {currentRates.map((option) => (
-          <div className={styles.currencyRow} key={option.currency}>
+        {currentRates.map(({ currency, value }) => (
+          <div className={styles.currencyRow} key={currency}>
             <div className={`${styles.currencyCell} ${styles.currencyCellLeft}`}>
-              <img
-                loading='lazy'
-                width='20'
-                src={routes.flagRoute(countries[option.currency].code)}
-                alt=''
-              />
+              <img loading='lazy' width='20' src={routes.flagRoute(codes[currency])} alt='' />
               <button
                 className={styles.currenciesBtn}
-                onClick={handleClick(option)}
-                title={buildInput(option)}
+                onClick={handleClick(currency)}
+                title={`${t(`countries.${currency}`)}`}
               >
                 <Typography noWrap className={styles.item}>
-                  {buildInput(option)}
+                  {t(`countries.${currency}`)}
                 </Typography>
               </button>
             </div>
             <div
               className={`${styles.currencyCell} ${styles.currencyCellRight}`}
-              title={`${option.value}`}
+              title={`${value}`}
             >
-              <Typography noWrap>{option.value}</Typography>
+              <Typography noWrap>{value}</Typography>
             </div>
           </div>
         ))}
@@ -77,7 +68,8 @@ const CurrenciesList = (): JSX.Element => {
           onChange={handleChange}
           count={pagesCount}
           shape='rounded'
-          siblingCount={0}
+          siblingCount={1}
+          boundaryCount={1}
         />
       </div>
     </>

@@ -4,7 +4,6 @@ import routes from '../routes/index';
 import { GlobalState, Currencies, CurrenciesState } from '../types/interfaces';
 
 const defaultCurrency = 'RUB';
-const defaultCurrencyIndex = 120; //index of 'RUB' from Api
 
 export const fetchCurrencies = createAsyncThunk(
   'currencies/fetchCurrencies',
@@ -23,7 +22,7 @@ export const fetchCurrencies = createAsyncThunk(
 );
 
 const initialState: CurrenciesState = {
-  currentCurrencyId: defaultCurrencyIndex,
+  currentCurrency: defaultCurrency,
   currenciesRates: [],
 };
 
@@ -32,7 +31,7 @@ const currenciesSlice = createSlice({
   initialState,
   reducers: {
     setCurrency: (state, { payload }) => {
-      state.currentCurrencyId = payload.id;
+      state.currentCurrency = payload;
     },
   },
   extraReducers: (builder) => {
@@ -40,7 +39,7 @@ const currenciesSlice = createSlice({
       const { rates } = payload;
       const currencies = Object.keys(rates);
       const currenciesWithValue = currencies.map(
-        (currency, id): Currencies => ({ currency, value: rates[currency], id }),
+        (currency): Currencies => ({ currency, value: rates[currency] }),
       );
       state.currenciesRates = currenciesWithValue;
     });
@@ -49,26 +48,20 @@ const currenciesSlice = createSlice({
 
 const selectCurrenciesState = (state: GlobalState) => state.currencies;
 
-export const selectCurrentCurrencyId = createSelector(
-  selectCurrenciesState,
-  (state: CurrenciesState) => state.currentCurrencyId,
-);
-
 export const selectAll = createSelector(
   selectCurrenciesState,
   (state: CurrenciesState) => state.currenciesRates,
 );
 
 export const selectCurrentCurrency = createSelector(
-  selectAll,
-  selectCurrentCurrencyId,
-  (currenciesRates, id) => currenciesRates[id],
+  selectCurrenciesState,
+  (state) => state.currentCurrency,
 );
 
 export const selectCurrentRates = createSelector(
   selectAll,
-  selectCurrentCurrencyId,
-  (currenciesRates, currentId) => currenciesRates.filter(({ id }) => currentId !== id),
+  selectCurrentCurrency,
+  (currenciesRates, current) => currenciesRates.filter(({ currency }) => currency !== current),
 );
 
 export const selectCurrenciesNames = createSelector(selectAll, (currenciesRates) =>

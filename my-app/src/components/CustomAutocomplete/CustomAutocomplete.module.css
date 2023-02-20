@@ -1,7 +1,7 @@
 .current {
   display: flex;
   flex: 1 1 100%;
-  padding-left: 10px;
+  padding-left: 2px;
 
   color: #000;
   background: #fff;
