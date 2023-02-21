@@ -1,0 +1,45 @@
+.currenciesListRow {
+  display: flex;
+  flex: 1 1 100%;
+  flex-wrap: wrap;
+
+  padding-left: 10px;
+}
+
+.currenciesListCell {
+  margin: auto;
+
+  font-weight: 700;
+}
+
+.cellLeft {
+  width: 65%;
+}
+
+.cellRight {
+  width: 35%;
+
+  text-align: center;
+}
+
+.currenciesListElement {
+  width: 100%;
+  padding-left: 10px;
+}
+
+.currenciesListBtn {
+  all: unset;
+
+  width: 65%;
+}
+
+.currenciesListBtn,
+.cellRight:hover {
+  cursor: pointer;
+}
+
+@media (max-width: 500px) {
+  .currenciesListItem {
+    padding-left: 5px;
+  }
+}

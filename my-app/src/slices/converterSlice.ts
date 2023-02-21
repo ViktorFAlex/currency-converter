@@ -1,15 +1,14 @@
 import axios from 'axios';
-import { createSlice, createAsyncThunk, createSelector } from '@reduxjs/toolkit';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import routes from '../routes/index';
-import { ConvertState, GlobalState } from '../types/interfaces';
+import { ConverterState, GlobalState } from '../types/interfaces';
 
 export const fetchConvert = createAsyncThunk(
-  'convert/fetchConvert',
+  'converter/fetchConvert',
   async ({ from, to, amount = '1' }: { from: string; to: string; amount: string }) => {
     try {
       const url = routes.convert(from, to, amount);
       const response = await axios.get(url.href);
-      console.log('resp', response);
       return response.data;
     } catch (e) {
       if (e instanceof Error) {
@@ -20,7 +19,7 @@ export const fetchConvert = createAsyncThunk(
   },
 );
 
-const initialState: ConvertState = {
+const initialState: ConverterState = {
   from: '',
   to: '',
   amount: 0,
@@ -28,8 +27,8 @@ const initialState: ConvertState = {
   result: 0,
 };
 
-const convertSlice = createSlice({
-  name: 'convert',
+const converterSlice = createSlice({
+  name: 'converter',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -42,7 +41,7 @@ const convertSlice = createSlice({
   },
 });
 
-export const selectConvertState = (state: GlobalState) => state.convert;
+export const selectConverterState = (state: GlobalState) => state.converter;
 
-export const { actions } = convertSlice;
-export default convertSlice.reducer;
+export const { actions } = converterSlice;
+export default converterSlice.reducer;

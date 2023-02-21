@@ -1,7 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
-import RatesPage from '../../pages/RatesPage/RatesPage';
-import ConverterPage from '../../pages/ConverterPage/ConverterPage';
+import RatesPage from '../../Pages/RatesPage/RatesPage';
+import ConverterPage from '../../Pages/ConverterPage/ConverterPage';
 import PageLayout from '../PageLayout/PageLayout';
 
 const App = () => (

@@ -1,8 +1,8 @@
-import { Button, ButtonGroup } from '@mui/material';
-import { Link, useLocation } from 'react-router-dom';
 import EuroIcon from '@mui/icons-material/Euro';
-import styles from './NavBar.module.css';
+import { Button, ButtonGroup } from '@mui/material';
 import { useTranslation } from 'react-i18next';
+import { Link, useLocation } from 'react-router-dom';
+import styles from './NavBar.module.css';
 
 const NavBar = (): JSX.Element => {
   const { t } = useTranslation();
@@ -15,13 +15,13 @@ const NavBar = (): JSX.Element => {
     <ButtonGroup
       aria-label='outlined primary button group'
       sx={{ display: 'flex', justifyContent: 'center' }}
-      className={styles.navBtn}
+      className={styles.navGroup}
     >
       <Button
         component={Link}
         to={navTo}
         variant='outlined'
-        className={styles.btn}
+        className={styles.navBtn}
         startIcon={<EuroIcon />}
       >
         {t(`elements.${navPage}Title`)}

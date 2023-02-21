@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './assets/index.css';
 import init from './init';
 
 const app = async () => {

@@ -1,20 +1,16 @@
-.lngSwitch {
-  position: absolute !important;
-  top: 1;
-  right: 0;
-
-  margin-right: 20px;
-}
 .headerIcon {
-  text-align: end;
   margin-right: 10px;
+
+  text-align: end;
 }
+
 .headerToolbar {
   position: relative;
 
   display: flex;
   justify-content: center;
   align-items: center;
+
   margin: 0;
   padding: 0;
 }
@@ -22,6 +18,7 @@
 .headerBox {
   position: sticky;
   top: 0px;
+
   margin-top: 0 !important;
   z-index: 1;
 }

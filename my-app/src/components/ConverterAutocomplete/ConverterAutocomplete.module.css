@@ -1,0 +1,28 @@
+.converterAutocomplete {
+  width: 33%;
+}
+
+.converterLeft {
+  order: 1;
+}
+
+.converterRight {
+  order: 3;
+}
+
+@media (max-width: 750px) {
+  .converterLeft,
+  .converterRight {
+    width: 48%;
+  }
+  .converterRight {
+    order: 2;
+  }
+}
+
+@media (max-width: 450px) {
+  .converterLeft,
+  .converterRight {
+    width: 100%;
+  }
+}

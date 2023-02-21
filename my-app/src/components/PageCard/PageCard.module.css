@@ -2,13 +2,17 @@
   display: flex;
   flex-direction: column;
   justify-content: start;
+
   min-height: fit-content;
   width: 50%;
   margin: 10px auto;
+
+  overflow: unset !important;
+
   box-shadow: inset 0 -3em 3em rgba(0, 0, 0, 0.1), 0 0 0 2px #fff,
     0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
-  overflow: unset !important;
 }
+
 .pageCardTitle,
 .pageCardDescription {
   text-align: center;
@@ -17,8 +21,9 @@
 .pageCardContent {
   display: flex;
   flex-wrap: wrap;
-  min-height: fit-content;
   justify-content: center;
+
+  min-height: fit-content;
 }
 
 @media screen and (max-width: 700px) {
@@ -26,6 +31,7 @@
     width: 75%;
   }
 }
+
 @media (max-width: 500px) {
   .pageCard {
     width: 100%;

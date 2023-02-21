@@ -1,0 +1,28 @@
+.converterSwitchBtn {
+  align-self: center;
+  order: 2;
+
+  width: 25%;
+
+  font-size: 30px;
+}
+
+@media (max-width: 750px) {
+  .converterSwitchBtn {
+    order: 3;
+
+    width: 50%;
+  }
+}
+
+@media (max-width: 575px) {
+  .converterSwitchBtn {
+    width: 70%;
+  }
+}
+
+@media (max-width: 450px) {
+  .converterSwitchBtn {
+    width: 90%;
+  }
+}

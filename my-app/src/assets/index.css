@@ -1,12 +1,19 @@
+html,
+body,
+#root {
+  height: 100%;
+}
+
 body {
   margin: 0;
+
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
     'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  box-sizing: border-box;
-  height: 100%;
+
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 code {
@@ -18,13 +25,16 @@ code {
   justify-content: center;
 }
 
-html {
-  height: 100%;
+.MuiPagination-ul {
+  flex-wrap: nowrap !important;
 }
-#root {
-  height: 100%;
+
+.MuiFormHelperText-root {
+  text-align: center !important;
 }
-@media (min-height: 1000px) {
-  #root {
+
+@media (max-width: 356px) {
+  .css-12j7rf6-MuiButtonBase-root-MuiPaginationItem-root {
+    min-width: 0 !important;
   }
 }

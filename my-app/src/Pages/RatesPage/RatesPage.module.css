@@ -1,0 +1,60 @@
+.ratesPageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: calc(100% - 4px);
+
+  margin: 0 auto 0 auto;
+}
+
+.ratesPageTable {
+  width: 50%;
+
+  margin-bottom: 10px;
+
+  border: 2px solid #000;
+}
+
+.ratesPageHeader {
+  display: flex;
+  flex-wrap: wrap;
+
+  width: 100%;
+}
+
+.ratesPageHeaderDescription {
+  display: flex;
+  flex: 1 1 100%;
+
+  padding: 5px 0 5px 10px;
+
+  background: rgb(243, 243, 144);
+}
+
+.ratesPageHeaderCell {
+  margin: auto;
+
+  font-weight: 700;
+  text-align: center;
+}
+
+.cellLeft {
+  width: 65%;
+}
+
+.cellRight {
+  width: 35%;
+}
+
+@media screen and (max-width: 750px) {
+  .ratesPageTable {
+    width: 75%;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .ratesPageTable {
+    width: 100%;
+  }
+}

@@ -1,8 +1,6 @@
-interface Countries {
-  [key: string]: string;
-}
+import { Codes } from '../types/interfaces';
 
-const codes: Countries = {
+const codes: Codes = {
   AED: 'ae',
   AFN: 'af',
   ALL: 'al',

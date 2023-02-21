@@ -1,50 +1,8 @@
-.currencyRow {
-  display: flex;
-  flex: 1 1 100%;
-  flex-wrap: wrap;
-  padding-left: 10px;
-}
-
-.gridMain {
-  background: #fff;
-  width: 100%;
+.currenciesListMain {
   display: flex;
   flex-wrap: wrap;
-}
 
-.currencyCell {
-  margin: auto;
-  font-weight: 700;
-}
-.currencyCellLeft {
-  width: 65%;
-}
-.currencyCellRight {
-  text-align: center;
-  width: 35%;
-}
-
-.gridFooter {
-  margin: auto;
-  background: #fff;
-}
-
-.item {
-  padding-left: 10px;
   width: 100%;
-}
 
-.currenciesBtn {
-  all: unset;
-  width: 65%;
-}
-.currenciesBtn,
-.currencyCellRight:hover {
-  cursor: pointer;
-}
-
-@media (max-width: 500px) {
-  .item {
-    padding-left: 5px;
-  }
+  background: #fff;
 }

@@ -1,0 +1,9 @@
+.headerLngSwitch {
+  position: absolute !important;
+  top: 1;
+  right: 0;
+}
+
+.headerLngName {
+  color: #fff;
+}

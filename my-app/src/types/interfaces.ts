@@ -1,4 +1,5 @@
 import { TFunction } from 'i18next';
+import { FormikProps } from 'formik';
 
 export interface Currencies {
   currency: string;
@@ -9,8 +10,17 @@ export interface CurrenciesState {
   currentCurrency: string;
   currenciesRates: Currencies[];
 }
+export interface FormikConverterValues {
+  from: string;
+  to: string;
+  amount: string;
+}
 
-export interface ConvertState {
+export interface Codes {
+  [key: string]: string;
+}
+
+export interface ConverterState {
   from: string;
   to: string;
   amount: number;
@@ -20,7 +30,7 @@ export interface ConvertState {
 
 export interface GlobalState {
   currencies: CurrenciesState;
-  convert: ConvertState;
+  converter: ConverterState;
 }
 
 export interface AutocompleteHandler {
@@ -33,4 +43,29 @@ export interface PageHandler {
 
 export interface BuildOutput {
   (translation: TFunction): (option: string) => string;
+}
+
+export interface CurrenciesListFooterProps {
+  page: number;
+  setPage: React.Dispatch<React.SetStateAction<number>>;
+  count: number;
+}
+
+export interface CurrenciesListBodyProps {
+  currency: string;
+  value: number;
+}
+
+type FormikType = FormikProps<FormikConverterValues>;
+
+export interface ConverterFormikProps {
+  formik: FormikType;
+}
+
+export interface ConverterProps extends ConverterFormikProps {
+  field: string;
+}
+
+export interface ConverterFieldsBlur {
+  (formik: FormikType, field: string): void;
 }

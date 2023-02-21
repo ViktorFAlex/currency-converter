@@ -5,9 +5,12 @@
 .pageBox {
   display: flex;
   flex-direction: column;
+
   min-height: 100%;
+
   background: #666564;
 }
+
 @media (max-width: 500px) {
   .pageContainer {
     padding: 0 !important;

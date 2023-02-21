@@ -1,0 +1,22 @@
+.converterAmount {
+  align-self: center;
+  width: 40%;
+}
+
+@media (max-width: 750px) {
+  .converterAmount {
+    width: 50%;
+  }
+}
+
+@media (max-width: 575px) {
+  .converterAmount {
+    width: 70%;
+  }
+}
+
+@media (max-width: 450px) {
+  .converterAmount {
+    width: 90%;
+  }
+}

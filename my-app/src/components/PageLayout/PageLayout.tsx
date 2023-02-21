@@ -2,13 +2,13 @@ import { Container, Box } from '@mui/material';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Outlet } from 'react-router';
+import { AppDispatch } from '../../slices';
+import { fetchCurrencies, selectAll } from '../../slices/currenciesSlice';
+import Header from '../Header/Header';
 import NavBar from '../NavBar/NavBar';
 import PageCard from '../PageCard/PageCard';
-import { fetchCurrencies, selectAll } from '../../slices/currenciesSlice';
-import { AppDispatch } from '../../slices';
-import styles from './PageLayout.module.css';
 import Footer from '../Footer/Footer';
-import Header from '../Header/Header';
+import styles from './PageLayout.module.css';
 
 const PageLayout = (): JSX.Element => {
   const dispatch = useDispatch<AppDispatch>();
