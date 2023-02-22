@@ -17,6 +17,7 @@ const ConverterAutocomplete = ({ formik, field }: ConverterProps): JSX.Element =
   return (
     <Autocomplete
       {...{ options: currencies }}
+      disabled={formik.isSubmitting}
       disablePortal
       autoHighlight
       value={formik.values[field as keyof FormikConverterValues]}

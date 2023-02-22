@@ -1,0 +1,21 @@
+{
+  "name": "currency-converter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.tsx",
+  "scripts": {
+    "build": "npm run build --prefix frontend",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd frontend && npm ci"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ViktorFAlex/currency-converter.git"
+  },
+  "author": "ViktorFAlex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ViktorFAlex/currency-converter/issues"
+  },
+  "homepage": "https://github.com/ViktorFAlex/currency-converter#readme"
+}

@@ -17,6 +17,12 @@ export default {
       lang: 'ru',
       1: '1',
     },
+    validation: {
+      chooseAnyCurrency: 'Choose any currency!',
+      invalidFormat: 'Invalid format!',
+      amountRequired: "This field can't be empty",
+      equalCurrencies: "Currencies can't be equal",
+    },
     countries: {
       AED: 'Emirati Dirham',
       AFN: 'Afghan Afghani',

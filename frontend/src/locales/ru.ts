@@ -18,6 +18,12 @@ export default {
       lang: 'en',
       1: '1',
     },
+    validation: {
+      chooseAnyCurrency: 'Выберите любую валюту!',
+      invalidFormat: 'Неверный формат!',
+      amountRequired: 'Это поле не может быть пустым!',
+      equalCurrencies: 'Валюты не могут быть одинаковыми!',
+    },
     countries: {
       AED: 'Эмиратский Дирхам',
       AFN: 'Афганский Афгани',

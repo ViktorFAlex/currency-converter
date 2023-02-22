@@ -19,9 +19,16 @@ const ConverterPage = (): JSX.Element => {
   const currencies = useSelector(selectCurrenciesNames);
 
   const validationSchema = Yup.object().shape({
-    from: Yup.string().required('Required field!').oneOf(currencies, 'choose any Option'),
-    to: Yup.string().required('Required field!').oneOf(currencies, 'choose any Option'),
-    amount: Yup.string().matches(/\d+/, 'Incorrect value').required('Required field!'),
+    from: Yup.string()
+      .required(`${t('validation.chooseAnyCurrency')}`)
+      .oneOf(currencies, `${t('validation.invalidFormat')}`),
+    to: Yup.string()
+      .required(`${t('validation.chooseAnyCurrency')}`)
+      .oneOf(currencies, `${t('validation.invalidFormat')}`)
+      .notOneOf([Yup.ref('from')], `${t('validation.equalCurrencies')}`),
+    amount: Yup.string()
+      .required(`${t('validation.amountRequired')}`)
+      .matches(/\d+/, `${t('validation.invalidFormat')}`),
   });
 
   const { amount } = useSelector(selectConverterState);
@@ -33,7 +40,13 @@ const ConverterPage = (): JSX.Element => {
       amount: '',
     },
     onSubmit: async (data) => {
-      await dispatch(fetchConvert(data));
+      try {
+        await dispatch(fetchConvert(data));
+      } catch (e) {
+        if (e instanceof Error) {
+          throw e;
+        }
+      }
     },
     validationSchema,
   });

@@ -9,6 +9,7 @@ const ConverterAmountInput = ({ formik, field }: ConverterProps): JSX.Element =>
 
   return (
     <TextField
+      disabled={formik.isSubmitting}
       error={
         !!formik.errors[field as keyof FormikConverterValues] &&
         formik.touched[field as keyof FormikConverterValues]
