@@ -8,7 +8,7 @@ const Header = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (
-    <Box className={styles.headerBox}>
+    <Box className={styles.headerBox} component='header'>
       <AppBar position='static' color='secondary'>
         <Toolbar className={styles.headerToolbar}>
           <MonetizationOnIcon className={styles.headerIcon} />

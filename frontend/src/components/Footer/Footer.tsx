@@ -4,7 +4,7 @@ import styles from './Footer.module.css';
 const Footer = (): JSX.Element => {
   const { t } = useTranslation();
   return (
-    <div className={styles.footer}>
+    <footer className={styles.footer}>
       <span>{t('elements.footer')}</span>
       <a
         href='https://exchangerate.host/'
@@ -14,7 +14,7 @@ const Footer = (): JSX.Element => {
       >
         {t('elements.footerLink')}
       </a>
-    </div>
+    </footer>
   );
 };
 export default Footer;

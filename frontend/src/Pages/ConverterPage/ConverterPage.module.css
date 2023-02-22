@@ -1,4 +1,4 @@
-.converterContainer {
+.converterForm {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -28,7 +28,7 @@
 }
 
 @media (max-width: 750px) {
-  .converterContainer {
+  .converterForm {
     width: 75%;
   }
   .converterBtn {
@@ -37,7 +37,7 @@
 }
 
 @media (max-width: 605px) {
-  .converterContainer {
+  .converterForm {
     width: calc(100% - 4px);
   }
 }
@@ -45,5 +45,11 @@
 @media (max-width: 450px) {
   .converterBtn {
     width: 70%;
+  }
+}
+
+@media (min-height: 1050px) {
+  .converterContainer {
+    margin-top: auto;
   }
 }

@@ -7,22 +7,20 @@ const RatesPage = (): JSX.Element => {
   const { t } = useTranslation();
 
   return (
-    <div className={styles.ratesPageContainer} aria-label='rates-table'>
-      <section className={styles.ratesPageTable}>
-        <div className={styles.ratesPageHeader}>
-          <div className={styles.ratesPageHeaderDescription}>
-            <div className={`${styles.ratesPageHeaderCell} ${styles.cellLeft}`}>
-              {t('elements.convert')}
-            </div>
-            <span className={`${styles.ratesPageHeaderCell} ${styles.cellRight}`}>
-              {t('elements.amount')}
-            </span>
+    <section className={styles.ratesPageTable} aria-label='rates-page'>
+      <div className={styles.ratesPageHeader}>
+        <div className={styles.ratesPageHeaderDescription}>
+          <div className={`${styles.ratesPageHeaderCell} ${styles.cellLeft}`}>
+            {t('elements.convert')}
           </div>
-          <RatesAutocomplete />
+          <span className={`${styles.ratesPageHeaderCell} ${styles.cellRight}`}>
+            {t('elements.amount')}
+          </span>
         </div>
-        <CurrenciesList />
-      </section>
-    </div>
+        <RatesAutocomplete />
+      </div>
+      <CurrenciesList />
+    </section>
   );
 };
 

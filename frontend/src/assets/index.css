@@ -33,7 +33,7 @@ code {
   text-align: center !important;
 }
 
-@media (max-width: 356px) {
+@media (max-width: 315px) {
   .css-12j7rf6-MuiButtonBase-root-MuiPaginationItem-root {
     min-width: 0 !important;
   }

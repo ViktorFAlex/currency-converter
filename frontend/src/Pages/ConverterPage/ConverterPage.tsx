@@ -52,10 +52,10 @@ const ConverterPage = (): JSX.Element => {
   });
 
   return (
-    <>
+    <section aria-label='converter-page' className={styles.converterContainer}>
       <Box
         component='form'
-        className={styles.converterContainer}
+        className={styles.converterForm}
         noValidate
         onSubmit={formik.handleSubmit}
       >
@@ -71,7 +71,7 @@ const ConverterPage = (): JSX.Element => {
         </Button>
       </Box>
       {!!amount && <ConverterField />}
-    </>
+    </section>
   );
 };
 
