@@ -1,5 +1,8 @@
-# currency-converter
+# Currency Converter
 Project based on [test-assignment](https://github.com/appbooster/test-assignments/blob/master/tasks/frontend.md) with some additions.
+
+## Deployment Link:
+[Currency converter](https://poetic-marigold-270a0e.netlify.app/)
 #### To make project run in developing environment:
 1) Setup:
 ```bash
