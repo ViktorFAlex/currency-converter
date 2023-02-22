@@ -9,3 +9,6 @@ build:
 
 start:
 	make -C frontend start
+
+deploy:
+	make -C frontend deploy
