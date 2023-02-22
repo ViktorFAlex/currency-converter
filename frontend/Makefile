@@ -9,6 +9,6 @@ build:
 
 lint:
 		npx eslint .
-		
+
 deploy:
-		npm deploy
+		npm run deploy
