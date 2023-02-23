@@ -13,8 +13,8 @@ const CurrenciesListBody = ({ currency, value }: CurrenciesListBodyProps): JSX.E
   const { t } = useTranslation();
 
   const handleClick = (currency: string) => (): void => {
-    dispatch(actions.setCurrency(currency));
     dispatch(fetchCurrencies(currency));
+    dispatch(actions.setCurrency(currency));
   };
 
   return (
