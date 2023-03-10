@@ -9,7 +9,7 @@ export default {
       switchCurrencies: 'Поменять валюты',
       enterAmount: 'Введите количество',
       converterDescription: 'Здесь вы можете подсчитать результат обмена одной валюты на другую',
-      ratesTitle: 'Обменные курсы',
+      ratesTitle: 'Курсы обмена',
       ratesDescription:
         'Здесь вы можете посмотреть актуальные курсы валют относительно выбранной вами',
       footer: 'На сайте использовано API:',

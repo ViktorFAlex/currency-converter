@@ -6,10 +6,10 @@ import { AppDispatch } from '../../slices/index';
 import { selectCurrenciesNames } from '../../slices/currenciesSlice';
 import { fetchConvert, selectConverterState } from '../../slices/converterSlice';
 import styles from './ConverterPage.module.css';
-import ConverterField from '../../components/ConverterField/ConverterField';
-import ConverterAutocomplete from '../../components/ConverterAutocomplete/ConverterAutocomplete';
-import ConverterSwitchButton from '../../components/ConverterSwitchButton/ConverterSwitchButton';
-import ConverterAmountInput from '../../components/ConverterAmountInput/ConverterAmountInput';
+import ConverterField from '../ConverterField/ConverterField';
+import ConverterAutocomplete from '../ConverterAutocomplete/ConverterAutocomplete';
+import ConverterSwitchButton from '../ConverterSwitchButton/ConverterSwitchButton';
+import ConverterAmountInput from '../ConverterAmountInput/ConverterAmountInput';
 import { useTranslation } from 'react-i18next';
 
 const ConverterPage = (): JSX.Element => {
@@ -24,8 +24,7 @@ const ConverterPage = (): JSX.Element => {
       .oneOf(currencies, `${t('validation.invalidFormat')}`),
     to: Yup.string()
       .required(`${t('validation.chooseAnyCurrency')}`)
-      .oneOf(currencies, `${t('validation.invalidFormat')}`)
-      .notOneOf([Yup.ref('from')], `${t('validation.equalCurrencies')}`),
+      .oneOf(currencies, `${t('validation.invalidFormat')}`),
     amount: Yup.string()
       .required(`${t('validation.amountRequired')}`)
       .matches(/\d+/, `${t('validation.invalidFormat')}`),

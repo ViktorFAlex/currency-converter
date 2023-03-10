@@ -1,6 +1,6 @@
 import { useTranslation } from 'react-i18next';
-import CurrenciesList from '../../components/CurrenciesList/CurrenciesList';
-import RatesAutocomplete from '../../components/RatesAutocomplete/RatesAutocomplete';
+import CurrenciesList from '../CurrenciesList/CurrenciesList';
+import RatesAutocomplete from '../RatesAutocomplete/RatesAutocomplete';
 import styles from './RatesPage.module.css';
 
 const RatesPage = (): JSX.Element => {

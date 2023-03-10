@@ -9,8 +9,8 @@ const ConverterSwitchButton = ({ formik }: ConverterFormikProps): JSX.Element =>
 
   const switchCurrencies = (): void => {
     const { from, to } = formik.values;
-    formik.setFieldValue('to', from);
     formik.setFieldValue('from', to);
+    formik.setFieldValue('to', from);
   };
 
   return (

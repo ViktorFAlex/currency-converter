@@ -11,12 +11,17 @@ import styles from './ConverterAutocomplete.module.css';
 
 const ConverterAutocomplete = ({ formik, field }: ConverterProps): JSX.Element => {
   const currencies = useSelector(selectCurrenciesNames);
+  const filteredCurrencies = currencies.filter((currency) => {
+    const { from, to } = formik.values;
+    return field === 'to' ? currency !== from : currency !== to;
+  });
+
   const { t } = useTranslation();
   const fieldStyle = field === 'from' ? 'converterLeft' : 'converterRight';
 
   return (
     <Autocomplete
-      {...{ options: currencies }}
+      {...{ options: filteredCurrencies }}
       disabled={formik.isSubmitting}
       disablePortal
       autoHighlight
