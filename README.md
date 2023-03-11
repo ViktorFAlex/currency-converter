@@ -1,6 +1,9 @@
 # Currency Converter
 Project based on [test-assignment](https://github.com/appbooster/test-assignments/blob/master/tasks/frontend.md) with some additions.
 
+## Preview:
+<img src="https://github.com/ViktorFAlex/projects-previews/blob/main/converter.gif" width="990" height="540">
+
 ## Deployment Link:
 [Currency converter](https://poetic-marigold-270a0e.netlify.app/)
 #### To make project run in developing environment:
