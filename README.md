@@ -1,5 +1,6 @@
-# Currency Converter
-Project based on [test-assignment](https://github.com/appbooster/test-assignments/blob/master/tasks/frontend.md) with some additions.
+# Currency Converter.
+
+### Api used: https://exchangerate.host/
 
 ## Preview:
 <img src="https://github.com/ViktorFAlex/projects-previews/blob/main/converter.gif" width="990" height="540">
