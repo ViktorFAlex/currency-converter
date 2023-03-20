@@ -1,9 +1,9 @@
 # Currency Converter.
-
-### Api used: https://exchangerate.host/
-
+First page: You can compare convert values between two currencies;  
+Second page: You can look at current currencies rates;
+***
 ## Preview:
-<img src="https://github.com/ViktorFAlex/projects-previews/blob/main/converter.gif" width="990" height="540">
+<img src="https://github.com/ViktorFAlex/projects-previews/blob/main/converter.gif" width="800" height="600">
 
 ## Deployment Link:
 [Currency converter](https://poetic-marigold-270a0e.netlify.app/)
@@ -23,3 +23,7 @@ make start
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=flat-square&logo=react&logoColor=%2361DAFB) ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=flat-square&logo=redux&logoColor=white) ![React Router](https://img.shields.io/badge/React_Router-CA4245?style=flat-square&logo=react-router&logoColor=white) ![MUI](https://img.shields.io/badge/MaterialUI-%233178C6.svg?style=flat-square&logo=mui&logoColor=white) ![ESLint](https://img.shields.io/badge/ESLint-4B3263?style=flat-square&logo=eslint&logoColor=white) 
 ##### Used resources:
 ![NPM](https://img.shields.io/badge/NPM-%23000000.svg?style=flat-square&logo=npm&logoColor=white) 
+
+***
+### Api used: https://exchangerate.host/
+
